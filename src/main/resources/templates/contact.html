@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - FlipkartClone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/modern-ui.css}" rel="stylesheet">
+</head>
+<body>
+
+<!-- Include Header -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center mb-4"><i class="bi bi-envelope"></i> Contact Us</h2>
+
+            <div class="row">
+                <!-- Contact Info -->
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5>Get In Touch</h5>
+                            <hr>
+                            <p><i class="bi bi-geo-alt text-primary"></i>
+                               <strong> Address:</strong><br>
+                               123, College Road, Mumbai, India - 400001</p>
+                            <p><i class="bi bi-telephone text-primary"></i>
+                               <strong> Phone:</strong><br>
+                               +91 98765 43210</p>
+                            <p><i class="bi bi-envelope text-primary"></i>
+                               <strong> Email:</strong><br>
+                               support@flipkartclone.com</p>
+                            <p><i class="bi bi-clock text-primary"></i>
+                               <strong> Working Hours:</strong><br>
+                               Mon - Sat: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="col-md-7 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5>Send us a Message</h5>
+                            <hr>
+                            <form onsubmit="handleContactSubmit(event)">
+                                <div class="mb-3">
+                                    <label class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" required
+                                           placeholder="Enter your name">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Your Email</label>
+                                    <input type="email" class="form-control" required
+                                           placeholder="Enter your email">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Subject</label>
+                                    <input type="text" class="form-control" required
+                                           placeholder="Enter subject">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Message</label>
+                                    <textarea class="form-control" rows="4" required
+                                              placeholder="Write your message..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary-fk w-100 py-3 shadow-sm mt-2">
+                                    <i class="bi bi-send me-2"></i> SEND MESSAGE
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/js/chatbot.js}"></script>
+
+<!-- Handle contact form submission with SweetAlert -->
+<script>
+function handleContactSubmit(event) {
+    event.preventDefault();
+    Swal.fire({
+        title: 'Message Sent!',
+        text: 'Thank you for contacting us. We will get back to you soon!',
+        icon: 'success',
+        confirmButtonColor: '#2874f0'
+    });
+    event.target.reset();
+}
+</script>
+
+</body>
+</html>

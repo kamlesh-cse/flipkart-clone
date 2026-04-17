@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    
+    <!-- Bootstrap CSS for Modern UI -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- jQuery CDN (Required for DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    
+    <!-- Custom Theme CSS -->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/modern-ui.css}" rel="stylesheet">
+    
+    <style>
+        /* Fix DataTables pagination styling clashing with Bootstrap */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0.2rem 0.5rem;
+            margin: 0;
+            border: none;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+            color: white !important;
+            border: 1px solid #0d6efd;
+            background-color: #0d6efd;
+            background: #0d6efd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<!-- Include Header -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container my-5">
+    <h3 class="text-center mb-4"><i class="bi bi-people"></i> Registered Users</h3>
+    <hr>
+
+    <!-- Flash Messages -->
+    <div th:if="${success}" class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+        <span th:text="${success}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+        <span th:text="${error}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!-- Data Table Container -->
+    <div class="table-responsive bg-white p-4 rounded shadow-sm border">
+        <table id="userTable" class="display table table-striped table-hover align-middle" style="width:100%;">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>User Name</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${userList}">
+                    <!-- Note: For valid HTML5 in-row inline forms, we use the `form` attribute on inputs associating them with a hidden form -->
+                    <td class="fw-bold">
+                        <form th:id="'form-user-' + ${user.id}" th:action="@{/user/update}" method="post">
+                            <input type="hidden" name="id" th:value="${user.id}" />
+                        </form>
+                        <span th:text="${user.id}">1</span>
+                    </td>
+
+                    <td>
+                        <input type="email" name="email" th:value="${user.email}" th:form="'form-user-' + ${user.id}" class="form-control form-control-sm border-0 bg-light" required />
+                    </td>
+
+                    <td>
+                        <input type="text" name="name" th:value="${user.name}" th:form="'form-user-' + ${user.id}" class="form-control form-control-sm border-0 bg-light" required />
+                    </td>
+                    
+                    <td class="text-muted">
+                        <span th:text="${user.phone ?: 'N/A'}"></span>
+                    </td>
+
+                    <td>
+                        <select name="role" th:form="'form-user-' + ${user.id}" class="form-select form-select-sm border-0 bg-light">
+                            <option value="USER" th:selected="${user.role == 'USER'}">USER</option>
+                            <option value="ADMIN" th:selected="${user.role == 'ADMIN'}">ADMIN</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button type="submit" th:form="'form-user-' + ${user.id}" class="btn btn-sm btn-primary shadow-sm px-3">
+                                <i class="bi bi-save"></i> Update
+                            </button>
+                            <a th:href="@{'/user/delete/' + ${user.id}}" 
+                               onclick="return confirm('Are you sure you want to delete this user?')"
+                               class="btn btn-sm btn-danger shadow-sm px-3">
+                               <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-5">
+        <a th:href="@{/}" class="btn btn-outline-secondary px-4 shadow-sm">
+            <i class="bi bi-arrow-left"></i> Back to Home
+        </a>
+    </div>
+</div>
+
+<!-- Include Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#userTable').DataTable({
+            // Enhance DataTables to look great with our UI
+            "pageLength": 10,
+            "lengthMenu": [5, 10, 25, 50],
+            "language": {
+                "search": "<i class='bi bi-search me-1'></i> Search:"
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

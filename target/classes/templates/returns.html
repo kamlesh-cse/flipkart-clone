@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancellation & Returns - FlipkartClone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/modern-ui.css}" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <!-- Include Header -->
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 overflow-hidden shadow-sm bg-white rounded-1">
+                <div class="p-5">
+                    <h2 class="fw-bold mb-4 border-bottom pb-3">Cancellation & Returns</h2>
+                    
+                    <h5 class="fw-bold mb-3">Cancellation Policy</h5>
+                    <p class="text-muted mb-4">You can cancel your order any time before it has been shipped. Once shipped, the order cannot be cancelled, but you can refuse delivery or initiate a return after receipt.</p>
+
+                    <h5 class="fw-bold mb-3">Return Policy (7-Day Return)</h5>
+                    <p class="text-muted mb-4">We offer a 7-day return policy for most products. The items must be returned in their original packaging with all tags and accessories included.</p>
+
+                    <h5 class="fw-bold mb-3">Refund Process</h5>
+                    <p class="text-muted mb-4">Once the return is received and inspected, we will initiate a refund to your original payment method. For Cash on Delivery (COD) orders, we request bank details for the transfer.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

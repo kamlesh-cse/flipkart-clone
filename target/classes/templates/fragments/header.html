@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- HEADER FRAGMENT - Included on all pages -->
+<header th:fragment="header" class="sticky-header mb-0" style="position: sticky; top: 0; z-index: 1030;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-fk py-1 px-0 shadow-sm">
+        <div class="container d-flex align-items-center">
+            <!-- Brand Logo -->
+            <a class="navbar-brand me-2 me-md-4 d-flex flex-column align-items-start" th:href="@{/home}">
+                <img src="https://itembase.com/wp-content/uploads/2023/02/279-200px600px-Color.png" alt="Flipkart" height="40" title="Flipkart">
+            </a>
+
+            <!-- Search Bar -->
+            <form class="flex-grow-1 mx-2 mx-md-5 order-lg-1 order-2 mt-2 mt-lg-0" th:action="@{/search}" method="get">
+                <div class="input-group search-group">
+                    <input class="form-control border-0 px-3 bg-white" type="search" name="keyword"
+                           placeholder="Search for products, brands and more" aria-label="Search" style="height: 36px;">
+                    <button class="btn border-0 bg-white text-primary px-3" type="submit">
+                        <i class="bi bi-search" style="font-size: 14px; stroke-width: 2;"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Navigation Links -->
+            <div class="ms-auto order-lg-2 order-1 d-flex align-items-center">
+                <ul class="navbar-nav d-flex flex-row align-items-center gap-3 gap-md-4 mb-0">
+                    <!-- Login/Signup (when not logged in) -->
+                    <li class="nav-item" sec:authorize="!isAuthenticated()">
+                        <a class="btn btn-white bg-white rounded-1 px-4 fw-bold text-primary shadow-sm" th:href="@{/login}" style="font-size: 14px; height: 32px; display: flex; align-items: center;">
+                            Login
+                        </a>
+                    </li>
+
+                    <!-- User Information & Menu (when logged in) -->
+                    <li class="nav-item dropdown d-none d-md-block" sec:authorize="isAuthenticated()">
+                        <a class="text-white text-decoration-none fw-bold dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" data-bs-toggle="dropdown">
+                            <span sec:authentication="name">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-3 p-0 overflow-hidden" style="min-width: 240px; border-radius: 2px;">
+                            <li class="border-bottom"><a class="dropdown-item py-3 px-4 d-flex align-items-center" th:href="@{/orders}"><i class="bi bi-box me-3 text-primary"></i> Orders</a></li>
+                            <li>
+                                <form th:action="@{/logout}" method="post">
+                                    <button type="submit" class="dropdown-item py-3 px-4 d-flex align-items-center text-danger"><i class="bi bi-box-arrow-right me-3"></i> Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="text-white text-decoration-none fw-bold d-flex align-items-center" th:href="@{/cart}">
+                            <i class="bi bi-cart-fill me-2 fs-5"></i> 
+                            <span class="d-none d-md-inline">Cart</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item dropdown d-none d-md-block">
+                        <a class="text-white text-decoration-none fw-bold dropdown-toggle" href="#" id="moreDropdown" data-bs-toggle="dropdown">
+                            More
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-3 p-0 overflow-hidden" style="border-radius: 2px;">
+                            <li class="border-bottom"><a class="dropdown-item py-2 px-4" th:href="@{/about}"><i class="bi bi-info-circle me-3 text-primary"></i> About Us</a></li>
+                            <li class="border-bottom"><a class="dropdown-item py-2 px-4" th:href="@{/contact}"><i class="bi bi-envelope me-3 text-primary"></i> Contact Us</a></li>
+                            <li sec:authorize="hasRole('ADMIN')">
+                                <a class="dropdown-item text-warning fw-bold py-2 px-4" th:href="@{/admin/dashboard}"><i class="bi bi-speedometer2 me-3"></i> Admin Panel</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            <!-- Mobile Toggle -->
+                <button class="navbar-toggler border-0 p-0 ms-3 d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                    <span class="navbar-toggler-icon" style="width: 24px; height: 24px;"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Collapsible Menu -->
+        <div class="collapse container pb-3 d-lg-none" id="navContent">
+            <ul class="navbar-nav pt-3 border-top mt-3">
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link text-white fw-bold d-flex align-items-center" th:href="@{/login}"><i class="bi bi-person me-3 fs-5"></i>Login</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <span class="nav-link text-white fw-bold d-flex align-items-center"><i class="bi bi-person-circle me-3 fs-5"></i><span sec:authentication="name">User</span></span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white d-flex align-items-center" th:href="@{/cart}"><i class="bi bi-cart-fill me-3 fs-5"></i>Cart</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link text-white d-flex align-items-center" th:href="@{/orders}"><i class="bi bi-box me-3 fs-5"></i>Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white d-flex align-items-center" th:href="@{/about}"><i class="bi bi-info-circle me-3 fs-5"></i>About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white d-flex align-items-center" th:href="@{/contact}"><i class="bi bi-envelope me-3 fs-5"></i>Contact Us</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                    <a class="nav-link text-warning fw-bold d-flex align-items-center" th:href="@{/admin/dashboard}"><i class="bi bi-speedometer2 me-3 fs-5"></i>Admin Panel</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method="post" class="d-inline">
+                        <button type="submit" class="nav-link text-danger border-0 bg-transparent fw-bold d-flex align-items-center mt-2 px-0"><i class="bi bi-box-arrow-right me-3 fs-5"></i>Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+</html>

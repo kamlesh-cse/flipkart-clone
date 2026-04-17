@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at FlipkartClone - FlipkartClone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/modern-ui.css}" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <!-- Include Header -->
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <div class="row g-0">
+        <div class="col-12 bg-primary-fk text-white py-5 text-center">
+            <h1 class="fw-bold mb-3">Join the Future of E-commerce</h1>
+            <p class="lead">Build your career with FlipkartClone and innovate for millions of customers.</p>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row mb-5">
+            <div class="col-md-6 mb-4">
+                <div class="bg-white p-5 shadow-sm h-100 rounded-1">
+                    <h3 class="fw-bold mb-3">Our Culture</h3>
+                    <p class="text-muted">At FlipkartClone, we foster a culture of innovation, inclusivity, and ownership. Every ideas matters, and every employee has the power to make an impact. We believe in work-life balance and continuous learning.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Hybrid work model</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Professional development funds</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Comprehensive health insurance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="bg-white p-5 shadow-sm h-100 rounded-1">
+                    <h3 class="fw-bold mb-3">Who we look for?</h3>
+                    <p class="text-muted">We are always on the lookout for talented developers, designers, product managers, and problem solvers who are passionate about e-commerce and customer experience.</p>
+                    <p class="text-muted">If you are a builder who thrives in a fast-paced environment and loves tackling complex challenges, you'll fit right in!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-5 shadow-sm rounded-1 mb-5">
+            <h3 class="fw-bold mb-4">Open Positions</h3>
+            <div class="list-group list-group-flush">
+                <div class="list-group-item px-0 py-4 d-flex justify-content-between align-items-center border-bottom">
+                    <div>
+                        <h5 class="fw-bold mb-1">Senior Full-Stack Developer</h5>
+                        <p class="mb-0 text-muted small">Mumbai, India - Remote Friendly</p>
+                    </div>
+                    <button class="btn btn-outline-primary px-4 py-2 rounded-1 fw-bold">Apply Now</button>
+                </div>
+                <div class="list-group-item px-0 py-4 d-flex justify-content-between align-items-center border-bottom">
+                    <div>
+                        <h5 class="fw-bold mb-1">UI/UX Designer</h5>
+                        <p class="mb-0 text-muted small">Mumbai, India - Full Time</p>
+                    </div>
+                    <button class="btn btn-outline-primary px-4 py-2 rounded-1 fw-bold">Apply Now</button>
+                </div>
+                <div class="list-group-item px-0 py-4 d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="fw-bold mb-1">Product Manager</h5>
+                        <p class="mb-0 text-muted small">Mumbai, India - Hybrid</p>
+                    </div>
+                    <button class="btn btn-outline-primary px-4 py-2 rounded-1 fw-bold">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

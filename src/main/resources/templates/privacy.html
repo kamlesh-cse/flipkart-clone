@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - FlipkartClone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/modern-ui.css}" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <!-- Include Header -->
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 overflow-hidden shadow-sm bg-white rounded-1">
+                <div class="p-5">
+                    <h2 class="fw-bold mb-4 border-bottom pb-3">Privacy Policy</h2>
+                    
+                    <p class="text-muted">At FlipkartClone, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by FlipkartClone and how we use it.</p>
+
+                    <h5 class="fw-bold mt-5 mb-3">Information We Collect</h5>
+                    <p class="text-muted">We collect information such as your name, email address, phone number, and shipping address when you register an account or place an order. We use this information to process your orders and provide better support.</p>
+
+                    <h5 class="fw-bold mt-5 mb-3">Cookies and Tracking</h5>
+                    <p class="text-muted">FlipkartClone uses cookies to store information about visitors' preferences and the pages that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content.</p>
+
+                    <h5 class="fw-bold mt-5 mb-3">Your Rights</h5>
+                    <p class="text-muted">You have the right to access, update, or delete the personal information we have on you. Please contact us if you wish to exercise any of these rights.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

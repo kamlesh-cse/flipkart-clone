@@ -1,0 +1,335 @@
+/* 
+   Flipkart-Clone Premium Design System
+   Inspired by: "The Editorial Marketplace"
+   Theme: Trust & Energy
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Brand Colors */
+  --fk-primary: #2874f0;       /* Trust Anchor */
+  --fk-primary-dark: #0056c3;
+  --fk-secondary: #fb641b;      /* The Pulse (CTA) */
+  --fk-secondary-dark: #a73a00;
+  
+  /* Neutral Palette (Material Design 3 Logic) */
+  --fk-bg: #fcf9f8;            /* Soft Boutique White */
+  --fk-surface: #ffffff;
+  --fk-surface-low: #f6f3f2;
+  --fk-surface-high: #f0eded;
+  
+  /* Text */
+  --fk-on-bg: #1b1c1c;         /* Soft Black */
+  --fk-on-surface-variant: #424754;
+  --fk-text-muted: #878787;
+  
+  /* Effects */
+  --fk-radius: 4px;
+  --fk-shadow-ambient: 0 20px 40px -5px rgba(0, 86, 195, 0.06);
+  --fk-glass: rgba(255, 255, 255, 0.85);
+}
+
+/* Base Styles */
+body {
+  background-color: var(--fk-bg);
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  color: var(--fk-on-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Header & Navigation */
+.bg-primary-fk {
+  background-color: var(--fk-primary) !important;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  backdrop-filter: blur(20px);
+  background: var(--fk-primary);
+}
+
+/* Premium Search Bar - Pill Shape */
+.search-group {
+  background: var(--fk-surface);
+  border-radius: 2px; /* Flipkart uses slightly rounded but almost square */
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.search-group:focus-within {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.search-group .form-control {
+  font-size: 14px;
+  color: var(--fk-on-bg);
+}
+
+.search-group .form-control:focus {
+  box-shadow: none;
+}
+
+/* Category Navigation Bar */
+.category-item {
+  color: var(--fk-on-bg);
+  text-decoration: none;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 2px solid transparent;
+}
+
+.category-item:hover {
+  color: var(--fk-primary);
+}
+
+.category-item span {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* Product Cards - "Editorial" Style */
+.fk-product-card {
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: var(--fk-radius);
+  border: none;
+  background: var(--fk-surface);
+  overflow: hidden;
+}
+
+.fk-product-card:hover {
+  box-shadow: var(--fk-shadow-ambient);
+  transform: translateY(-4px);
+}
+
+.fk-product-card .img-wrapper {
+  padding: 24px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.fk-product-card .card-body {
+  padding: 16px;
+}
+
+.fk-product-card .card-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--fk-on-bg);
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Pricing Hierarchy */
+.price-main {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--fk-on-bg);
+}
+
+.price-old {
+  font-size: 14px;
+  color: var(--fk-text-muted);
+  text-decoration: line-through;
+}
+
+.price-discount {
+  font-size: 13px;
+  font-weight: 700;
+  color: #388e3c;
+}
+
+/* Buttons */
+.btn-warning-fk {
+  background: var(--fk-secondary) !important;
+  color: white !important;
+  border: none;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.btn-warning-fk:hover {
+  background: var(--fk-secondary-dark) !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline-primary {
+  border-color: var(--fk-primary);
+  color: var(--fk-primary);
+  font-weight: 600;
+  border-radius: 2px;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--fk-primary);
+  border-color: var(--fk-primary);
+}
+
+.btn-primary-fk {
+  background-color: var(--fk-primary) !important;
+  color: white !important;
+  border: none;
+  font-weight: 600;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.btn-primary-fk:hover {
+  background-color: var(--fk-primary-dark) !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Status Badges */
+.badge-placed { background-color: #2874f0; }
+.badge-confirmed { background-color: #1976d2; }
+.badge-shipped { background-color: #fbc02d; color: #000; }
+.badge-delivered { background-color: #388e3c; }
+.badge-cancelled { background-color: #d32f2f; }
+
+/* Footer Section */
+footer {
+  background-color: #172337;
+  padding: 60px 0;
+  color: #fff;
+  font-size: 12px;
+}
+
+footer h6 {
+  color: #878787;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer ul li {
+  margin-bottom: 8px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .category-item {
+    padding: 8px;
+  }
+  .category-item span {
+    font-size: 12px;
+  }
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Buy Now Button (Orange) */
+.btn-tertiary-fk {
+  background: var(--fk-secondary) !important;
+  color: white !important;
+  border: none;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.btn-tertiary-fk:hover {
+  background: var(--fk-secondary-dark) !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add to Cart Button (Yellow) */
+.btn-warning-fk {
+  background: #ff9f00 !important;
+  color: white !important;
+  border: none;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.btn-warning-fk:hover {
+  background: #e08c00 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Premium Carousel Banner ---------- */
+#homeCarousel {
+  max-height: 400px;
+
+}
+
+#homeCarousel .carousel-item img {
+  height: 400px;
+  width: 100%;
+  object-fit: contain;   /* FIXED */
+  background-color: #fff; /* optional for empty space */
+}
+#homeCarousel:hover img {
+  transform: scale(1.03);   /* subtle zoom effect */
+}
+
+#homeCarousel .carousel-control-prev-icon,
+#homeCarousel .carousel-control-next-icon {
+  background-color: rgba(0,0,0,0.7) !important;
+  border-radius: 50%;
+  padding: 25px;
+  filter: invert(1);
+}
+
+@media (max-width: 768px) {
+  #homeCarousel .carousel-item img {
+    height: 180px;
+  }
+}
